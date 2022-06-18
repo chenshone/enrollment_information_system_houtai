@@ -1,41 +1,46 @@
-import request from '@/utils/request'
+import request from "@/utils/request";
 
-export function fetchList(query) {
+export function upArticle(data) {
   return request({
-    url: '/vue-element-admin/article/list',
-    method: 'get',
-    params: query
-  })
+    url: "/article",
+    method: "post",
+    data,
+  });
 }
 
-export function fetchArticle(id) {
+export function getArticleByPageAndTopic(data) {
   return request({
-    url: '/vue-element-admin/article/detail',
-    method: 'get',
-    params: { id }
-  })
+    url: "/article",
+    method: "get",
+    params: {
+      page: data.page,
+      topics: data.topics,
+    },
+  });
 }
 
-export function fetchPv(pv) {
+export function getArticleById(id) {
   return request({
-    url: '/vue-element-admin/article/pv',
-    method: 'get',
-    params: { pv }
-  })
+    url: "/article/one",
+    method: "get",
+    params: {
+      id,
+    },
+  });
 }
 
-export function createArticle(data) {
+export function deleteArticle(id) {
   return request({
-    url: '/vue-element-admin/article/create',
-    method: 'post',
-    data
-  })
+    url: "/article",
+    method: "delete",
+    params: { id },
+  });
 }
 
 export function updateArticle(data) {
   return request({
-    url: '/vue-element-admin/article/update',
-    method: 'post',
-    data
-  })
+    url: "/article",
+    method: "put",
+    data,
+  });
 }
